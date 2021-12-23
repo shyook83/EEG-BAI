@@ -4,18 +4,18 @@ Preprocessed EEG data were converted into scalograms based on the continuous wav
 We chose to use 16 frequency bands of the center frequency C, which were determined to be 0.5, 0.7, 0.9, 1.2, 1.6, 2.1, 2.8, 3.8, 5.0, 6.7, 8.9, 11.9, 15.8, 21.1, 28.1, and 37.5 Hz using the log scale distancing. Each band width B was determined as 1.5 times of the corresponding center frequency. 
 Finally, the input data shape is (2160 (time bin), 16 (frequency bands), 6 (electrode channels).
 
-# Hardware Requirements
+## Hardware Requirements
 We tested this code in the following hardware environment.
 CPU: AMD - Ryzen 7 5800X
 GPU: RTX 3090
 RAM: 32GB
 
-# Software Requirements
-## OS Requirements
+## Software Requirements
+### OS Requirements
 This code is tested on Linux operating systems. The developmental version of the package has been tested on the following systems:
 Linux: Ubuntu 18.04
 
-##other software versions that we tested.
+### other software versions that we tested.
 grpcio==1.27.2
 h5py==2.10.0
 Keras==2.3.1
