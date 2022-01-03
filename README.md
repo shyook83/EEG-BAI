@@ -21,7 +21,6 @@ This code is tested on Linux operating systems. The developmental version of the
 - Keras==2.3.1
 - Keras-Applications==1.0.8
 - Keras-Preprocessing==1.1.0
-- keras-resnet==0.2.0
 - numpy==1.18.1
 - pandas==1.0.4
 - pyflakes==2.2.0
