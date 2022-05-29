@@ -3,7 +3,7 @@
 """
 Created on Mon Jun 22 21:36:36 2020
 
-@author: syook
+@ Modified by Hoseok Choi
 """
 
 
