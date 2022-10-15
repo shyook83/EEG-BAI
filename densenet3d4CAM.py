@@ -118,34 +118,7 @@ def build_densenet_forCAM(input_shape, num_outputs, densenettype):
     x = Scale(axis=concat_axis, name='conv'+str(final_stage)+'_blk_scale')(x)
     x = Activation('relu', name='relu'+str(final_stage)+'_blk')(x)
 
-    x1, nb_filter = dense_block1(x, final_stage, nb_layers[-1], nb_filter, growth_rate, \
-                                 dropout_rate=dropout_rate, weight_decay=weight_decay)
-
-    x1 = BatchNormalization(epsilon=eps, axis=concat_axis, name='convm'+str(final_stage)+'_blk_bn')(x1)
-    x1 = Scale(axis=concat_axis, name='convm'+str(final_stage)+'_blk_scale')(x1)
-    x1 = Activation('relu', name='relum'+str(final_stage)+'_blk')(x1)
-
-    x2 = Conv3D(filters=512, kernel_size=(3, 3,3),
-                strides=(1, 1,1), padding="same",
-                name='conv_ss1')(x1)
-    x2 = BatchNormalization(epsilon=eps, axis=concat_axis, name='bn_ss1')(x2)
-    x2 = Scale(axis=concat_axis, name='scale_ss1')(x2)
-    x2 = Activation('relu', name='relu_ss1')(x2)
-
-    x2 = Conv3D(filters=1024, kernel_size=(3, 3,3),
-                strides=(1, 1,1), padding="same",
-                name='conv_ss2')(x2)
-    x2 = BatchNormalization(epsilon=eps, axis=concat_axis, name='bn_ss2')(x2)
-    x2 = Scale(axis=concat_axis, name='scale_ss2')(x2)
-    x2 = Activation('relu', name='relu_ss2')(x2)
-
-    x2 = Conv3D(filters=2000, kernel_size=(3, 3,3),
-                strides=(1, 1,1), padding="same",
-                name='conv_ss3')(x2)
    
-    flatten_ss1 = GlobalAveragePooling3D(name='CAM_pool_ss')(x2)
-    x2 = Dense(2000, name='CAM_fc_ss')(flatten_ss1)
-    x2 = Activation('relu', name='prob')(x2)
  
 
 
@@ -169,7 +142,7 @@ def build_densenet_forCAM(input_shape, num_outputs, densenettype):
     x = Dense(classes, name='CAM_fc')(flatten1)
    # x = Activation('softmax', name='prob')(x)
 
-    model = Model(img_input, [x, x2], name='densenet3d')
+    model = Model(img_input, x, name='densenet3d')
 
     if weights_path is not None:
       model.load_weights(weights_path)
