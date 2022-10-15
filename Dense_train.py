@@ -5,6 +5,11 @@ Created on Mon Jun 22 21:36:36 2020
 
 @ Modified by Hoseok Choi
 """
+"""
+Created on Sun Aug 16 21:40:26 2020
+
+@author: Soonhyun Yook
+"""
 
 
 import inspect, os, sys
@@ -112,11 +117,11 @@ elif model_id == 5:     #densenet3d
     modelname = 'densenet3d4CAMmodel'
     from densenet3d4CAM import build_densenet_forCAM
     if datafilename[12] == '_':
-        model = build_densenet_forCAM((2160, 16, 6, 1), class_num, densenettype)
+        model = build_densenet_forCAM((2000, 16, 7, 1), class_num, densenettype)
     elif datafilename[12] == '1':
         model = build_densenet_forCAM((100, 28, 51, 1), class_num, densenettype)
     elif datafilename[12] == '2':
-        model = build_densenet_forCAM((2160, 16, 6, 1), class_num, densenettype)
+        model = build_densenet_forCAM((2000, 16, 7, 1), class_num, densenettype)
     
 finalconv_name = 'CAM_conv' # this is the last conv layer of the network
 
@@ -184,8 +189,8 @@ test_data=np.concatenate(y)
 y1=x1[:int(len(x1))]
 train_data=np.concatenate(y1)
 #%%
-train_data=train_data.reshape(int(train_data.shape[0]/2160),2160,train_data.shape[1],train_data.shape[2],train_data.shape[3])
-test_data=test_data.reshape(int(test_data.shape[0]/2160),2160,test_data.shape[1],test_data.shape[2],test_data.shape[3])
+train_data=train_data.reshape(int(train_data.shape[0]/2000),2000,train_data.shape[1],train_data.shape[2],train_data.shape[3])
+test_data=test_data.reshape(int(test_data.shape[0]/2000),2000,test_data.shape[1],test_data.shape[2],test_data.shape[3])
 
 
 #%%
