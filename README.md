@@ -9,7 +9,7 @@ We tested this code in the following hardware environment.
 CPU: AMD - Ryzen 7 5800X
 GPU: RTX 3090
 RAM: 32GB
-
+ 
 ## Software Requirements
 ### OS Requirements
 This code is tested on Linux operating systems. The developmental version of the package has been tested on the following systems:
